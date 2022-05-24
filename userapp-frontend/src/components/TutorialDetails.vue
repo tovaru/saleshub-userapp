@@ -42,6 +42,7 @@
     <p>Please click on a Tutorial...</p>
   </div>
 </template>
+
 <script>
 import TutorialDataService from "../services/TutorialDataService";
 export default {
