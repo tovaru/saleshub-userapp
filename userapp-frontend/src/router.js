@@ -21,14 +21,6 @@ export default new Router({
       }
     },
     {
-      path: "/home",
-      name: "home",
-      component: () => import("./components/Home"),
-      meta: {
-        requieresAuth: true
-      }
-    },
-    {
       path: "/register",
       name: "register",
       component: () => import("./components/Register"),
@@ -50,31 +42,6 @@ export default new Router({
       component: () => import("./components/UserDetails"),
       meta: {
         requieresAuth: false
-      }
-    },
-    {
-      path: "/",
-      alias: "/tutorials",
-      name: "tutorials",
-      component: () => import("./components/TutorialsList"),
-      meta: {
-        requieresAuth: true
-      }
-    },
-    {
-      path: "/tutorials/:id",
-      name: "tutorial-details",
-      component: () => import("./components/TutorialDetails"),
-      meta: {
-        requieresAuth: true
-      }
-    },
-    {
-      path: "/add",
-      name: "add",
-      component: () => import("./components/AddTutorial"),
-      meta: {
-        requieresAuth: true
       }
     }
   ]

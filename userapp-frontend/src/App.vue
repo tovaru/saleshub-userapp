@@ -5,14 +5,14 @@
         Welcome, 
       </div> -->
       <div v-if="username">
-        <span class="d-flex align-center mr-2">Welcome, {{ username }}</span>
+        <span class="d-flex align-center mr-2">Welcome, {{ username }}.</span>
       </div>
       <div v-else>
         <div class="d-flex align-center mr-2">
         Please sign in.
         </div>
       </div>
-      <v-btn to="/userDashboard" text>
+      <v-btn color="yellow" to="/userDashboard" text>
         User database
       </v-btn>
       <v-btn color="accent" elevation="2" to="/register" text>

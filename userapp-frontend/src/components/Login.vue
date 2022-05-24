@@ -58,10 +58,13 @@ export default {
         .then((response) => {
           console.log(response);
           this.submitted = true;
+          alert(response.data.message);
+          window.location.href = 'http://localhost:8081/userDashboard';
+          //this.$router.push('userDashboard');
         })
         .catch((e) => {
           console.log(e);
-          alert(e);
+          alert(e.response.data.message);
         });
     },
     newAuth() {
