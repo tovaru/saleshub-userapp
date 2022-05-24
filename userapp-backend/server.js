@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // set database
 const db = require("./app/models");
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+db.sequelize.sync().then(() => {
+  console.log("Re-synced db.");
+});
 
 // implement login functionality
 app.use(session({
@@ -34,7 +34,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'static')));
 
 // include model routes
-require("./app/routes/tutorial.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/auth.routes")(app);
 

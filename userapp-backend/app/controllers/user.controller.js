@@ -97,11 +97,14 @@ exports.update = (req, res) => {
     const id = req.params.id;
 
     // check if user has admin permissions
-    if (req.session.role !== "admin") {
-        res.status(403).send({
-            message: "You don't have permissions for that."
-        });
-        return;
+    if (req.session.userRole !== "admin") {
+        // check if it's at least its own account
+        if (req.session.userId != id) {
+            res.status(403).send({
+                message: "You don't have permissions for that."
+            });
+            return;
+        }
     }
 
     User.update(req.body, {
@@ -137,9 +140,7 @@ exports.delete = (req, res) => {
     
     const id = req.params.id;
 
-    // check if user has admin permissions or same account deleting itself
-    //console.log("user with id " + req.session.userId + " ("+req.session.userRole+") is trying to delete id " + id);
-    //console.log(req.session.userRole !== "admin" || req.session.userId == id);
+    // check if user has admin permissions or if it's same account deleting itself
     if (req.session.userRole !== "admin" || req.session.userId == id) {
         res.status(403).send({
             message: "You don't have permissions for that."
@@ -179,7 +180,7 @@ exports.deleteAll = (req, res) => {
     }
 
     // check if user has admin permissions
-    if (req.session.role !== "admin") {
+    if (req.session.userRole !== "admin") {
         res.status(403).send({
             message: "You don't have permissions for that."
         });
